@@ -1,0 +1,13 @@
+# Spark 课程作业依赖清单
+# 安装：pip install -r requirements.txt
+#
+# 注意：PySpark 还需要本机安装 JDK（8 / 11 / 17 / 21 均可），
+# 并正确设置 JAVA_HOME。
+
+pyspark>=3.5
+pandas>=2.0
+matplotlib>=3.7
+numpy>=1.24
+jupyter>=1.0
+notebook>=7.0
+ipykernel>=6.0
