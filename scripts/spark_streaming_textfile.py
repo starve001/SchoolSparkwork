@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from pyspark.sql import SparkSession
 from pyspark.streaming import StreamingContext
 
@@ -12,8 +14,10 @@ sc.setLogLevel("WARN")
 ssc = StreamingContext(sc, 5)
 
 # 创建DStream
-# textFileStream:监听文件夹
-lines = ssc.textFileStream("file:///C:/Users/lwr/Desktop/Object/spark/data/SparkStreaming/")
+# textFileStream:监听文件夹（相对 scripts/ 的 ../data/SparkStreaming，首次运行自动创建）
+watch_dir = Path("../data/SparkStreaming").resolve()
+watch_dir.mkdir(parents=True, exist_ok=True)
+lines = ssc.textFileStream(watch_dir.as_uri())
 
 # Transformation
 # map:逐个函数转换
